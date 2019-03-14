@@ -47,7 +47,6 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     ext.toolversion = "28.0.0"
-    ext.roomversion = "1.1.1"
     implementation "com.android.support:appcompat-v7:$toolversion"
     implementation "com.android.support:support-v4:$toolversion"
     implementation "com.android.support:design:$toolversion"

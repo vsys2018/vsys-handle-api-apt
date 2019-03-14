@@ -56,14 +56,19 @@ public class MainActivity extends AppCompatActivity {
                             String rs = Net.getStringGET("http://127.0.0.1:22099/>20&" + r);
                         }
                     }, f -> {
-                        int a = f;
+                        if (f.equals(200)) {
+                            lastResponse = "";
+                            Net.getStringGET("http://127.0.0.1:22099/>22&ERROR404", s -> {
+                            });
+                        }
                     });
                 } else {
                     Net.getStringGET("http://127.0.0.1:22099/>22&ERROR", s -> {
                     });
                 }
-            } else if (spl[1] == "2") {
+            } else if (spl[0].equals("2")) {
                 // Get more
+                String b = lastResponse;
             } else {
                 Net.getStringGET("http://127.0.0.1:22099/>22&ERROR", s -> {
                 });
