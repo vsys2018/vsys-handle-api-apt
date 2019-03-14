@@ -1,0 +1,58 @@
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral()
+        google()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.2.1'
+    }
+}
+
+
+allprojects {
+    repositories {
+        jcenter()
+        maven { url 'https://jitpack.io' }
+        google()
+        flatDir {
+            dirs 'libs'
+        }
+    }
+}
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.vsys.android.vsyshandleapi"
+        minSdkVersion 15
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    ext.toolversion = "28.0.0"
+    ext.roomversion = "1.1.1"
+    implementation "com.android.support:appcompat-v7:$toolversion"
+    implementation "com.android.support:support-v4:$toolversion"
+    implementation "com.android.support:design:$toolversion"
+    implementation "com.android.support:cardview-v7:$toolversion"
+    implementation "com.android.support:recyclerview-v7:$toolversion"
+    implementation "com.android.support:preference-v7:$toolversion"
+    implementation (name: 'hlibs', ext: 'aar')
+}
