@@ -83,7 +83,13 @@ public class MainActivity extends AppCompatActivity {
                 return jo.getString(key);
             } else if (input.startsWith("[")) {
                 JSONArray ja = new JSONArray(input);
-                JSONObject jo = ja.getJSONObject(Integer.parseInt(position));
+                JSONObject jo;
+                int pos = Integer.parseInt(position);
+                if (pos == -1) {
+                    jo = ja.getJSONObject(ja.length() - 1);
+                } else {
+                    jo = ja.getJSONObject(pos);
+                }
                 return jo.getString(key);
             } else {
                 return "ERROR";
